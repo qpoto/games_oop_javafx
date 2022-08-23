@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 @Disabled()
-public class WinTest {
+public class  WinTest {
     @Test
     public void whenVerticalWin() {
         int[][] board = {
