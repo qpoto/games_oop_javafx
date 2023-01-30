@@ -22,6 +22,6 @@ class BishopBlackTest {
     @Test
     void way() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
-        bishopBlack.way(Cell.C5);
+        bishopBlack.way(Cell.G5);
     }
 }
