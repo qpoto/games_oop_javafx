@@ -28,7 +28,7 @@ public final class Logic {
             if (figure != null) {
                 Cell[] figureWay = figure.way(dest);
                 for (int j = 0; j < figureWay.length; j++) {
-                    if(figureWay[i] != null) {
+                    if (figureWay[i] != null) {
                         break;
                     }
                 }
