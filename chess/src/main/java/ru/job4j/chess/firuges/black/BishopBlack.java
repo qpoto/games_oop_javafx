@@ -23,15 +23,15 @@ public class BishopBlack implements Figure {
                     String.format("Could not move by diagonal from %s to %s", position, dest)
             );
         }
-        int size = 8;
+        int size = Math.abs(wayDest(position, dest));
         Cell[] steps = new Cell[size];
-        int deltaX = 1;
-        int deltaY = 1;
+        int deltaX = position.getX() - dest.getX() > 0 ? 1 : -1;
+        int deltaY = position.getY() - dest.getY() > 0 ? 1 : -1;
         int x = position.getX();
         int y = position.getY();
         for (int index = 0; index < size; index++) {
-            x = Math.abs(x - deltaX);
-            y = Math.abs(y - deltaY);
+            x = x - deltaX;
+            y = y - deltaY;
             steps[index] = Cell.findBy(1,2);
         }
         return steps;
@@ -44,5 +44,13 @@ public class BishopBlack implements Figure {
     @Override
     public Figure copy(Cell dest) {
         return new BishopBlack(dest);
+    }
+
+    public static int wayDest(Cell position, Cell dest) {
+        int rsl = 0;
+        if (Math.abs(position.getX() - dest.getX()) == Math.abs(position.getY()) - dest.getY()) {
+            rsl = Math.abs(position.getX()) - dest.getX();
+        }
+        return rsl;
     }
 }
