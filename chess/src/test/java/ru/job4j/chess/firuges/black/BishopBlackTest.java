@@ -1,31 +1,28 @@
 package ru.job4j.chess.firuges.black;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import ru.job4j.chess.firuges.Cell;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class BishopBlackTest {
+public class BishopBlackTest {
 
     @Test
-    void position() {
-        BishopBlack bishopBlack = new BishopBlack(Cell.C3);
-        bishopBlack.position();
-
+    public void whePositionIsCorrect() {
+        BishopBlack bishopBlack = new BishopBlack(Cell.A3);
+        assertThat((bishopBlack.position()), is(Cell.A3));
     }
 
     @Test
-    void copy() {
-        BishopBlack bishopBlack = new BishopBlack(Cell.C3);
-        bishopBlack.copy(Cell.C3);
+    public void whenCopyIsCorrect() {
+        BishopBlack bishopBlack = new BishopBlack(Cell.D1);
+        assertThat(bishopBlack.copy(Cell.D1).position(), is(Cell.D1));
     }
 
     @Test
-    void way() {
+    public void whenWayIsCorrect() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
-        Cell[] rsl = bishopBlack.way(Cell.G5);
-        Cell[] exp = new Cell[]{Cell.D2, Cell.E3, Cell.F4, Cell.G5};
-        assertArrayEquals(exp, rsl);
+        Cell[] expected = new Cell[] {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
+        assertThat(bishopBlack.way(Cell.G5), is(expected));
     }
 }

@@ -21,18 +21,11 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        Cell dest = steps[steps.length - 1];
-        for (int i = 0; i < steps.length; i++) {
-            Cell source = steps[i];
-            Figure figure = figures[findBy(source)];
-            if (figure != null) {
-                Cell[] figureWay = figure.way(dest);
-                for (int j = 0; j < figureWay.length; j++) {
-                    if (figureWay[i] != null) {
-                        break;
-                    }
+        for (Figure figure : figures) {
+            for (Cell cell : steps) {
+                if (figure != null && figure.position().equals(cell)) {
+                    throw new OccupiedCellException("Occupied cell by another figure.");
                 }
-                figures[findBy(source)] = figure.copy();
             }
         }
         return true;
